@@ -1,6 +1,8 @@
 ---
+version: 2
+
 snapshot:
-  name_template: '{{ incminor .Version }}-prerelease'
+  version_template: '{{ incminor .Version }}-prerelease'
 
 builds:
   - main: .
@@ -26,7 +28,7 @@ builds:
 
 archives:
   - id: exporter_exporter
-    builds:
+    ids:
       - exporter_exporter
     name_template: 'exporter_exporter_{{ .Version }}_{{ title .Os }}_{{ if eq .Arch "amd64" }}x86_64{{ else }}{{ .Arch }}{{ end }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
 
@@ -38,7 +40,8 @@ release:
     ---------------------
 
 kos:
-  - repository: "docker.io/qubitproducts/exporter_exporter"
+  - repositories:
+    - "docker.io/qubitproducts/exporter_exporter"
     tags:
     - '{{.Version}}'
     - latest
