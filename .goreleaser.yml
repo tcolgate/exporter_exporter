@@ -39,16 +39,16 @@ release:
     exporter_exporter {{ .Version }}
     ---------------------
 
-kos:
-  - repositories:
-    - "docker.io/qubitproducts/exporter_exporter"
-    tags:
-    - '{{.Version}}'
-    - latest
-    bare: true
-    platforms:
-    - linux/amd64
-    - linux/arm64
+#kos:
+#  - repositories:
+#    - "docker.io/qubitproducts/exporter_exporter"
+#    tags:
+#    - '{{.Version}}'
+#    - latest
+#    bare: true
+#    platforms:
+#    - linux/amd64
+#    - linux/arm64
 
 nfpms:
   - package_name: expexp
