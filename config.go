@@ -30,8 +30,8 @@ type config struct {
 	Global struct {
 	}
 	Modules       map[string]*moduleConfig
-	DefaultModule string                 `yaml:"defaultModule"`
-	XXX           map[string]interface{} `yaml:",inline"`
+	DefaultModule string         `yaml:"defaultModule"`
+	XXX           map[string]any `yaml:",inline"`
 
 	bearerToken   string
 	proxyPath     string
@@ -39,9 +39,9 @@ type config struct {
 }
 
 type moduleConfig struct {
-	Method  string                 `yaml:"method"`
-	Timeout time.Duration          `yaml:"timeout"`
-	XXX     map[string]interface{} `yaml:",inline"`
+	Method  string         `yaml:"method"`
+	Timeout time.Duration  `yaml:"timeout"`
+	XXX     map[string]any `yaml:",inline"`
 
 	Exec execConfig `yaml:"exec"`
 	HTTP httpConfig `yaml:"http"`
@@ -51,21 +51,21 @@ type moduleConfig struct {
 }
 
 type httpConfig struct {
-	Verify                *bool                  `yaml:"verify"`                   // no default
-	TLSInsecureSkipVerify bool                   `yaml:"tls_insecure_skip_verify"` // false
-	TLSCertFile           *string                `yaml:"tls_cert_file"`            // no default
-	TLSKeyFile            *string                `yaml:"tls_key_file"`             // no default
-	TLSCACertFile         *string                `yaml:"tls_ca_cert_file"`         // no default
-	TLSRootCaFile         *string                `yaml:"tls_root_ca_file"`         // no default
-	TLSServerName         *string                `yaml:"server_name"`              // no default
-	Port                  int                    `yaml:"port"`                     // no default
-	Path                  string                 `yaml:"path"`                     // /metrics
-	Scheme                string                 `yaml:"scheme"`                   // http
-	Address               string                 `yaml:"address"`                  // 127.0.0.1
-	Headers               map[string]string      `yaml:"headers"`                  // no default
-	BasicAuthUsername     string                 `yaml:"basic_auth_username"`      // no default
-	BasicAuthPassword     string                 `yaml:"basic_auth_password"`      // no default
-	XXX                   map[string]interface{} `yaml:",inline"`
+	Verify                *bool             `yaml:"verify"`                   // no default
+	TLSInsecureSkipVerify bool              `yaml:"tls_insecure_skip_verify"` // false
+	TLSCertFile           *string           `yaml:"tls_cert_file"`            // no default
+	TLSKeyFile            *string           `yaml:"tls_key_file"`             // no default
+	TLSCACertFile         *string           `yaml:"tls_ca_cert_file"`         // no default
+	TLSRootCaFile         *string           `yaml:"tls_root_ca_file"`         // no default
+	TLSServerName         *string           `yaml:"server_name"`              // no default
+	Port                  int               `yaml:"port"`                     // no default
+	Path                  string            `yaml:"path"`                     // /metrics
+	Scheme                string            `yaml:"scheme"`                   // http
+	Address               string            `yaml:"address"`                  // 127.0.0.1
+	Headers               map[string]string `yaml:"headers"`                  // no default
+	BasicAuthUsername     string            `yaml:"basic_auth_username"`      // no default
+	BasicAuthPassword     string            `yaml:"basic_auth_password"`      // no default
+	XXX                   map[string]any    `yaml:",inline"`
 
 	tlsConfig              *tls.Config
 	mcfg                   *moduleConfig
@@ -73,10 +73,10 @@ type httpConfig struct {
 }
 
 type execConfig struct {
-	Command string                 `yaml:"command"`
-	Args    []string               `yaml:"args"`
-	Env     map[string]string      `yaml:"env"`
-	XXX     map[string]interface{} `yaml:",inline"`
+	Command string            `yaml:"command"`
+	Args    []string          `yaml:"args"`
+	Env     map[string]string `yaml:"env"`
+	XXX     map[string]any    `yaml:",inline"`
 
 	mcfg *moduleConfig
 }

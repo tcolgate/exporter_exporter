@@ -92,7 +92,7 @@ func (c fileConfig) GatherWithContext(ctx context.Context, r *http.Request) prom
 		err := <-errc
 		if err != nil {
 			err = fmt.Errorf("file module %v failed to read file %v, %w", c.mcfg.name, c.Path, err)
-			log.Warnf(err.Error())
+			log.Warn(err.Error())
 			fileFailsCount.WithLabelValues(c.mcfg.name).Inc()
 			if errors.Is(err, context.DeadlineExceeded) || errors.Is(err, os.ErrDeadlineExceeded) {
 				proxyTimeoutCount.WithLabelValues(c.mcfg.name).Inc()

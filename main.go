@@ -28,6 +28,7 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 	"time"
 
@@ -114,7 +115,7 @@ func init() {
 func setup() (*config, error) {
 	cfg := &config{
 		Modules: make(map[string]*moduleConfig),
-		XXX:     make(map[string]interface{}),
+		XXX:     make(map[string]any),
 	}
 	if *cfgFile != "" {
 		r, err := os.Open(*cfgFile)
@@ -214,16 +215,12 @@ func getClientValidator(r *regexp.Regexp, helloInfo *tls.ClientHelloInfo) func([
 				return nil
 			}
 
-			for _, name := range leaf.DNSNames {
-				if r.MatchString(name) {
-					return nil
-				}
+			if slices.ContainsFunc(leaf.DNSNames, r.MatchString) {
+				return nil
 			}
 
-			for _, name := range leaf.EmailAddresses {
-				if r.MatchString(name) {
-					return nil
-				}
+			if slices.ContainsFunc(leaf.EmailAddresses, r.MatchString) {
+				return nil
 			}
 		}
 		return errors.New("no client certificate subject or email address matched")
