@@ -38,4 +38,4 @@ build: vet format test
 
 .PHONY: release
 release:
-	go run github.com/goreleaser/goreleaser@latest release
+	goreleaser release
