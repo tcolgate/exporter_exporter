@@ -51,8 +51,8 @@ nfpms:
   - package_name: expexp
     bindir: /usr/local/bin
     file_name_template: "{{ .ConventionalFileName }}"
-    vendor: QubitProducts
-    homepage: https://github.com/QubitProducts/exporter_exporter
+    vendor: tcolgate
+    homepage: https://github.com/tcolgate/exporter_exporter
     maintainer: tristan@qubit.com
 
     # Your app's description.
