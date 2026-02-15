@@ -35,10 +35,10 @@ Features that will NOT be included:
 
 ## Installation
 
-You can build directly using a plain ```go get github.com/QubitProducts/exporter_exporter```.
+You can build directly using a plain ```go get github.com/tcolgate/exporter_exporter```.
 The provided Makefile is primarily used for releases.
 
-Pre-built binaries and a debian package are available on the [GitHub release page](https://github.com/QubitProducts/exporter_exporter/releases).
+Pre-built binaries and a debian package are available on the [GitHub release page](https://github.com/tcolgate/exporter_exporter/releases).
 
 An ansible recipe as also [available](https://github.com/umanit/ansible-prometheus_exporter_exporter) (kindly provided by one of our users).
 
