@@ -39,6 +39,10 @@ release:
     exporter_exporter {{ .Version }}
     ---------------------
 
+  footer: |
+    ## Container Images
+
+    `ghcr.io/tcolgate/exporter_exporter:{{ .Version }}`
 kos:
   - repositories:
     - "ghcr.io/tcolgate/exporter_exporter"
