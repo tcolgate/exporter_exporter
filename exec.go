@@ -25,6 +25,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	dto "github.com/prometheus/client_model/go"
 	"github.com/prometheus/common/expfmt"
+	"github.com/prometheus/common/model"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -85,7 +86,7 @@ func (c execConfig) GatherWithContext(ctx context.Context, r *http.Request) prom
 			}
 			return nil, err
 		}
-		var prsr expfmt.TextParser
+		prsr := expfmt.NewTextParser(model.LegacyValidation)
 
 		var result []*dto.MetricFamily
 		mfs, err := prsr.TextToMetricFamilies(&out)
